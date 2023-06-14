@@ -8,8 +8,12 @@ const url = 'https://aknamed-backend.up.railway.app';
 
 const userSlice = createSlice({
     name: 'user',
-    initialState: {url: url},
-    reducers: {}
+    initialState: {url: url, submit:false},
+    reducers: {
+        submit(state) {
+            state.submit = true;
+        }
+    }
 });
   
 

@@ -1,12 +1,15 @@
 import React, { useRef, Fragment } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import axios from "axios";
 
+import { userActions } from "../../store/user-slice";
+
 //First Page for user to enter is details and submit
 const User = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const url = useSelector((state) => state.user.url);
 
     const nameInputRef = useRef();
@@ -63,6 +66,7 @@ const User = () => {
                 emailInputRef.current.value = '';
                 phoneInputRef.current.value = '';
                
+                dispatch(userActions.submit());
                 navigate('/details');
             }
             else {
